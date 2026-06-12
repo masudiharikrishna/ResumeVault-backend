@@ -44,9 +44,13 @@ export class DocumentsController {
     @Req() req: any,
     @Query('query') query?: string,
     @Query('type') type?: string,
+    @Query('page') page?: string,
+    @Query('limit') limit?: string,
   ) {
     const userId = req.user.sub;
-    return this.documentsService.listDocuments(userId, query, type);
+    const pageNum = page ? parseInt(page, 10) : 1;
+    const limitNum = limit ? parseInt(limit, 10) : 6;
+    return this.documentsService.listDocuments(userId, query, type, pageNum, limitNum);
   }
 
   @Get(':id/preview')

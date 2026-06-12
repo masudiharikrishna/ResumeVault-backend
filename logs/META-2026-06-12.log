@@ -412,3 +412,35 @@
 {"context":"RouterExplorer","level":"info","message":"Mapped {/documents/:id, DELETE} route","timestamp":"2026-06-12T05:46:36.531Z"}
 {"context":"NestApplication","level":"info","message":"Nest application successfully started","timestamp":"2026-06-12T05:46:36.534Z"}
 {"level":"info","message":"Application is running on: http://localhost:4000","timestamp":"2026-06-12T05:46:36.538Z"}
+{"context":"NestFactory","level":"info","message":"Starting Nest application...","timestamp":"2026-06-12T06:32:21.722Z"}
+{"context":"InstanceLoader","level":"info","message":"MongooseModule dependencies initialized","timestamp":"2026-06-12T06:32:21.740Z"}
+{"context":"InstanceLoader","level":"info","message":"LoggerModule dependencies initialized","timestamp":"2026-06-12T06:32:21.741Z"}
+{"context":"InstanceLoader","level":"info","message":"S3Module dependencies initialized","timestamp":"2026-06-12T06:32:21.741Z"}
+{"context":"InstanceLoader","level":"info","message":"JwtModule dependencies initialized","timestamp":"2026-06-12T06:32:21.741Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigHostModule dependencies initialized","timestamp":"2026-06-12T06:32:21.742Z"}
+{"context":"InstanceLoader","level":"info","message":"AppModule dependencies initialized","timestamp":"2026-06-12T06:32:21.742Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized","timestamp":"2026-06-12T06:32:21.742Z"}
+{"context":"InstanceLoader","level":"info","message":"ConfigModule dependencies initialized","timestamp":"2026-06-12T06:32:21.742Z"}
+{"context":"InstanceLoader","level":"info","message":"MongooseCoreModule dependencies initialized","timestamp":"2026-06-12T06:32:22.681Z"}
+{"context":"InstanceLoader","level":"info","message":"MongooseModule dependencies initialized","timestamp":"2026-06-12T06:32:22.694Z"}
+{"context":"InstanceLoader","level":"info","message":"MongooseModule dependencies initialized","timestamp":"2026-06-12T06:32:22.694Z"}
+{"context":"InstanceLoader","level":"info","message":"AuthModule dependencies initialized","timestamp":"2026-06-12T06:32:22.696Z"}
+{"context":"InstanceLoader","level":"info","message":"UsersModule dependencies initialized","timestamp":"2026-06-12T06:32:22.696Z"}
+{"context":"InstanceLoader","level":"info","message":"DocumentsModule dependencies initialized","timestamp":"2026-06-12T06:32:22.697Z"}
+{"context":"RoutesResolver","level":"info","message":"AppController {/}:","timestamp":"2026-06-12T06:32:22.703Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/health-check, GET} route","timestamp":"2026-06-12T06:32:22.706Z"}
+{"context":"RoutesResolver","level":"info","message":"AuthController {/auth}:","timestamp":"2026-06-12T06:32:22.706Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/signup, POST} route","timestamp":"2026-06-12T06:32:22.707Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/auth/login, POST} route","timestamp":"2026-06-12T06:32:22.707Z"}
+{"context":"RoutesResolver","level":"info","message":"UsersController {/users}:","timestamp":"2026-06-12T06:32:22.708Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/profile, GET} route","timestamp":"2026-06-12T06:32:22.708Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/users/profile, PATCH} route","timestamp":"2026-06-12T06:32:22.709Z"}
+{"context":"RoutesResolver","level":"info","message":"DocumentsController {/documents}:","timestamp":"2026-06-12T06:32:22.709Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/documents/upload, POST} route","timestamp":"2026-06-12T06:32:22.710Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/documents, POST} route","timestamp":"2026-06-12T06:32:22.711Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/documents, GET} route","timestamp":"2026-06-12T06:32:22.711Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/documents/:id/preview, GET} route","timestamp":"2026-06-12T06:32:22.712Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/documents/:id/download, GET} route","timestamp":"2026-06-12T06:32:22.712Z"}
+{"context":"RouterExplorer","level":"info","message":"Mapped {/documents/:id, DELETE} route","timestamp":"2026-06-12T06:32:22.713Z"}
+{"context":"NestApplication","level":"info","message":"Nest application successfully started","timestamp":"2026-06-12T06:32:22.715Z"}
+{"level":"info","message":"Application is running on: http://localhost:4000","timestamp":"2026-06-12T06:32:22.720Z"}

@@ -65,7 +65,13 @@ export class DocumentsService {
     }
   }
 
-  async listDocuments(userId: string, query?: string, type?: string): Promise<DocumentDocument[]> {
+  async listDocuments(
+    userId: string,
+    query?: string,
+    type?: string,
+    page: number = 1,
+    limit: number = 6,
+  ): Promise<any> {
     try {
       const filter: any = { userId, isDeleted: { $ne: true } };
       
@@ -80,7 +86,20 @@ export class DocumentsService {
         ];
       }
 
-      return await this.documentModel.find(filter).sort({ createdAt: -1 }).exec();
+      const skip = (page - 1) * limit;
+
+      const [docs, total] = await Promise.all([
+        this.documentModel.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).exec(),
+        this.documentModel.countDocuments(filter).exec(),
+      ]);
+
+      return {
+        docs,
+        total,
+        page,
+        limit,
+        totalPages: Math.ceil(total / limit),
+      };
     } catch (error: any) {
       throw new InternalServerErrorException('Error listing documents: ' + error.message);
     }
