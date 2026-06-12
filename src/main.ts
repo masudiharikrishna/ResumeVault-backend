@@ -11,7 +11,24 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger,
   });
-  app.enableCors();
+
+  const allowedOrigins = process.env.ALLOWED_ORIGINS
+    ? process.env.ALLOWED_ORIGINS.split(',').map((o) => o.trim())
+    : ['*'];
+
+  app.enableCors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes('*') || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+    allowedHeaders: 'Content-Type,Accept,Authorization,X-Requested-With',
+  });
+
   const port = process.env.PORT || 4000;
   await app.listen(port);
   logger.log(`Application is running on: http://localhost:${port}`);
