@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from '../src/app.module';
 import { WinstonLogger } from '../src/common/logger/winston-logger.service';
 import { ExpressAdapter } from '@nestjs/platform-express';
-import * as express from 'express';
+import express from 'express';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
