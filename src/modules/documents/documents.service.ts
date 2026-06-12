@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException, BadRequestException, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { Document, DocumentDocument } from '../../models/document.schema';
 import { EncryptionService } from './encryption.service';
 import { S3Service } from '../s3/s3.service';
@@ -88,10 +88,25 @@ export class DocumentsService {
 
       const skip = (page - 1) * limit;
 
-      const [docs, total] = await Promise.all([
+      const [docs, total, typeCounts] = await Promise.all([
         this.documentModel.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).exec(),
         this.documentModel.countDocuments(filter).exec(),
+        this.documentModel.aggregate([
+          { $match: { userId: new Types.ObjectId(userId), isDeleted: { $ne: true } } },
+          { $group: { _id: '$type', count: { $sum: 1 } } }
+        ]).exec(),
       ]);
+
+      const counts: Record<string, number> = {
+        resume: 0,
+        'cover-letter': 0
+      };
+
+      typeCounts.forEach((tc) => {
+        if (tc._id) {
+          counts[tc._id] = tc.count;
+        }
+      });
 
       return {
         docs,
@@ -99,6 +114,7 @@ export class DocumentsService {
         page,
         limit,
         totalPages: Math.ceil(total / limit),
+        counts,
       };
     } catch (error: any) {
       throw new InternalServerErrorException('Error listing documents: ' + error.message);

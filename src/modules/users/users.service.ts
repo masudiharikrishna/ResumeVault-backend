@@ -38,7 +38,7 @@ export class UsersService {
 
   async findByEmail(email: string): Promise<UserDocument | null> {
     try {
-      return await this.userModel.findOne({ email: email.toLowerCase() }).exec();
+      return await this.userModel.findOne({ email: email.toLowerCase() }).select('+password').exec();
     } catch (error) {
       throw new InternalServerErrorException('Error finding user by email: ' + error.message);
     }
@@ -65,7 +65,7 @@ export class UsersService {
       }
 
       if (currentPassword && newPassword) {
-        const user = await this.userModel.findById(userId).exec();
+        const user = await this.userModel.findById(userId).select('+password').exec();
         if (!user) {
           throw new NotFoundException('User not found');
         }
